@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "62783440390",
+    "project_id": "misch-c6ebc",
+    "storage_bucket": "misch-c6ebc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62783440390:android:d613bd61ff04461475a587",
+        "android_client_info": {
+          "package_name": "com.misch.misch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3iPXdLSaAwr95A2QPs9wzfbkvjJxzT-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
