@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:misch/api/translation_api.dart';
 import 'package:misch/model/message.dart';
 
 class ChatService extends ChangeNotifier {
@@ -14,6 +15,10 @@ class ChatService extends ChangeNotifier {
     final String currentUserId = _firebaseAuth.currentUser!.uid;
     final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
     final Timestamp timestamp = Timestamp.now();
+
+    // String translateMessage() {
+    //   return TranslationApi.translate(message, "en", "ru");
+    // }
 
     // create a new message
     Message newMessage = Message(
