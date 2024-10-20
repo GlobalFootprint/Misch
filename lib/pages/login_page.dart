@@ -20,6 +20,9 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  // enablers
+  bool signInBtnEnabled = true;
+
   // sign in user
   Future<void> signIn() async {
     // get the auth service
@@ -48,11 +51,15 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 const SizedBox(height: 50),
 
+                const Text('Misch',
+                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                ),
+
                 // logo
-                Icon(
-                  Icons.message, // TODO: replace with Misch logo
-                  size: 80,
-                  color: Colors.grey[800],
+                const Image(
+                  image: AssetImage("assets/MischFlutterFly.png"),
+                  width: 200,
+                  height: 200,
                 ),
 
                 const SizedBox(height: 50),
@@ -86,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 25),
 
                 // sign in button
-                MyButton(onTap: signIn, text: 'Sign In'),
+                MyButton(onTap: signIn, text: 'Sign In', enabled: signInBtnEnabled,),
 
                 const SizedBox(height: 25),
 

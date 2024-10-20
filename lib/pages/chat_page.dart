@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:misch/api/translation_api.dart';
 import 'package:misch/components/chat_bubble.dart';
 import 'package:misch/components/my_text_field.dart';
 import 'package:misch/components/translation_title_widget.dart';
@@ -114,7 +113,6 @@ class _ChatPageState extends State<ChatPage> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-
           crossAxisAlignment:
             (data['senderId'] == _firebaseAuth.currentUser!.uid)
                 ? CrossAxisAlignment.end
@@ -124,7 +122,7 @@ class _ChatPageState extends State<ChatPage> {
                 ? MainAxisAlignment.end
                 : MainAxisAlignment.start,
           children: [
-            Text(data['senderEmail']),
+            Text(data['senderEmail'].split('@')[0]),
             const SizedBox(height: 5,),
             TranslationWidget(
                 message: data['message'],

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:misch/api/translation_api.dart';
 import 'package:misch/model/message.dart';
 
 class ChatService extends ChangeNotifier {
@@ -16,10 +15,6 @@ class ChatService extends ChangeNotifier {
     final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
     final Timestamp timestamp = Timestamp.now();
 
-    // String translateMessage() {
-    //   return TranslationApi.translate(message, "en", "ru");
-    // }
-
     // create a new message
     Message newMessage = Message(
         senderId: currentUserId,
@@ -29,10 +24,14 @@ class ChatService extends ChangeNotifier {
         timestamp: timestamp
     );
 
-    // construct chat room id from current user id and reciever id (sorted to ensure uniqueness)
+    // construct chat room id from current user id and receiver id (sorted to ensure uniqueness)
     List<String> ids = [currentUserId, receiverId];
     ids.sort();
-    String chatRoomId = ids.join("_"); // combine the ids into a single string to use as a chatrooId
+    String chatRoomId = ids.join("_"); // combine the ids into a single string to use as a chatroomId
+
+    _fireStore.collection('chat_rooms').doc(chatRoomId).set({
+      'chat room id' : chatRoomId.split('_'),
+    }); SetOptions(merge: true);
 
     // add new message to database
     await _fireStore
